@@ -1,18 +1,23 @@
-import { useEffect, useRef } from 'react';
-import './App.css';
+import { lazy } from 'react';
+import ErrorBoundary from './ErrorBoundary';
 
-const loadAngularElement = async () => await import('angularRemote/LoginUi');
+const LoginUX = lazy(async () => {
+  const elm = document.createElement('app-root');
+  document.body.appendChild(elm);
+  const angularRemote = await import('angularRemote/MyAngularElement');
+  const loginUi = await import('angularRemote/LoginUi');
+
+  console.log(loginUi);
+  return { default: () => <login-ui /> };
+});
 
 function App() {
-  useEffect(() => {
-    loadAngularElement().then((LoginUi) => {
-      console.log(LoginUi);
-    });
-  }, []);
   return (
-    <div className="App">
-      <login-ui></login-ui>
-    </div>
+    <>
+      <ErrorBoundary>
+        <LoginUX />
+      </ErrorBoundary>
+    </>
   );
 }
 

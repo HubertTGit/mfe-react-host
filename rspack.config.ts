@@ -44,6 +44,20 @@ export default defineConfig({
           },
         ],
       },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                config: './postcss.config.mjs',
+              },
+            },
+          },
+        ],
+        type: 'css',
+      },
     ],
   },
   plugins: [
