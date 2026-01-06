@@ -50,6 +50,17 @@ export default defineConfig({
     new rspack.HtmlRspackPlugin({
       template: './index.html',
     }),
+    new rspack.container.ModuleFederationPlugin({
+      name: 'react_app',
+      filename: 'remoteEntry.js',
+      remotes: {
+        angularRemote: 'angularRemote@http://localhost:4200/remoteEntry.js',
+      },
+      shared: {
+        react: { singleton: true, eager: true },
+        'react-dom': { singleton: true, eager: true },
+      },
+    }),
     isDev ? new ReactRefreshRspackPlugin() : null,
   ],
   optimization: {
