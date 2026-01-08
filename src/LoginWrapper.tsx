@@ -4,15 +4,16 @@ import { lazy, useEffect, useRef } from 'react';
 import { mount } from 'angularRemote/LoginUi';
 
 interface LoginWrapperProps {
-  name: string;
-  onLogin: (data: CustomEvent) => void;
+  name?: string;
+  onLogin?: (data: CustomEvent) => void;
+  isLoading?: boolean;
 }
 
 export const LoginWrapper = lazy(async () => {
   await mount();
 
   return {
-    default: ({ name, onLogin }: LoginWrapperProps) => {
+    default: ({ name, onLogin, isLoading }: LoginWrapperProps) => {
       const elementRef = useRef<HTMLElement>(null);
 
       useEffect(() => {
@@ -36,8 +37,7 @@ export const LoginWrapper = lazy(async () => {
         };
       }, [onLogin]);
 
-      console.log('LoginWrapper', name, onLogin);
-      return <login-ui name={name} ref={elementRef} />;
+      return <login-ui name={name} ref={elementRef} isLoading={isLoading} />;
     },
   };
 });

@@ -3,14 +3,17 @@ import ErrorBoundary from './ErrorBoundary';
 import { LoginWrapper } from './LoginWrapper';
 
 function App() {
+  const onLoginHandler = (data: CustomEvent) => {
+    console.log('Login', data);
+  };
+
   return (
     <>
-      <Suspense fallback={<div>Loading Now...</div>}>
+      <Suspense fallback={<LoginWrapper isLoading={true} />}>
         <ErrorBoundary>
-          <LoginWrapper
-            name="Jack"
-            onLogin={(data) => console.log('Login', data)}
-          />
+          <main className="flex h-screen items-center justify-center">
+            <LoginWrapper name="Jack" onLogin={onLoginHandler} />
+          </main>
         </ErrorBoundary>
       </Suspense>
     </>
