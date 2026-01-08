@@ -1,22 +1,18 @@
-import { lazy } from 'react';
+import { Suspense } from 'react';
 import ErrorBoundary from './ErrorBoundary';
-
-const LoginUX = lazy(async () => {
-  const elm = document.createElement('app-root');
-  document.body.appendChild(elm);
-  const angularRemote = await import('angularRemote/MyAngularElement');
-  const loginUi = await import('angularRemote/LoginUi');
-
-  console.log(loginUi);
-  return { default: () => <login-ui /> };
-});
+import { LoginWrapper } from './LoginWrapper';
 
 function App() {
   return (
     <>
-      <ErrorBoundary>
-        <LoginUX />
-      </ErrorBoundary>
+      <Suspense fallback={<div>Loading Now...</div>}>
+        <ErrorBoundary>
+          <LoginWrapper
+            name="Jack"
+            onLogin={(data) => console.log('Login', data)}
+          />
+        </ErrorBoundary>
+      </Suspense>
     </>
   );
 }

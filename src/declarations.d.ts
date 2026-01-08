@@ -1,13 +1,18 @@
-declare module 'angularRemote/LoginUi';
-declare module 'angularRemote/MyAngularElement';
-
 declare global {
   namespace JSX {
     interface IntrinsicElements {
       'login-ui': React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
+        React.HTMLAttributes<HTMLElement> & {
+          name?: string;
+          onLogin?: (data: CustomEvent) => void;
+          ref?: React.Ref<HTMLElement>;
+        },
         HTMLElement
       >;
     }
   }
+}
+
+declare module 'angularRemote/LoginUi' {
+  export const mount: () => Promise<() => void>;
 }
