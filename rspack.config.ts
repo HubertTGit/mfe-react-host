@@ -1,6 +1,7 @@
 import { defineConfig } from '@rspack/cli';
 import { rspack, type SwcLoaderOptions } from '@rspack/core';
 import { ReactRefreshRspackPlugin } from '@rspack/plugin-react-refresh';
+import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -64,7 +65,7 @@ export default defineConfig({
     new rspack.HtmlRspackPlugin({
       template: './index.html',
     }),
-    new rspack.container.ModuleFederationPlugin({
+    new ModuleFederationPlugin({
       name: 'react_app',
       filename: 'remoteEntry.js',
       remotes: {
@@ -73,6 +74,9 @@ export default defineConfig({
       shared: {
         react: { singleton: true, eager: true },
         'react-dom': { singleton: true, eager: true },
+      },
+      dts: {
+        consumeTypes: true,
       },
     }),
     isDev ? new ReactRefreshRspackPlugin() : null,

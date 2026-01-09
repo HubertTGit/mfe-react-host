@@ -1,4 +1,3 @@
-/// <reference path="./declarations.d.ts" />
 import { lazy, useEffect, useRef } from 'react';
 
 import { mount } from 'angularRemote/LoginUi';

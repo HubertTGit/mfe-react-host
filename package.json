@@ -10,6 +10,7 @@
     "preview": "rspack preview"
   },
   "dependencies": {
+    "@module-federation/enhanced": "^0.22.0",
     "@tailwindcss/postcss": "^4.1.18",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
