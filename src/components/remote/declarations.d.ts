@@ -16,3 +16,7 @@ declare global {
 declare module 'angularRemote/LoginUi' {
   export const mount: () => Promise<() => void>;
 }
+
+declare module 'angularRemote/ThemeSwitch' {
+  export const mount: () => Promise<() => void>;
+}
