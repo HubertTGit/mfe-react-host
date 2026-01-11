@@ -3,6 +3,9 @@ import { rspack, type SwcLoaderOptions } from '@rspack/core';
 import { ReactRefreshRspackPlugin } from '@rspack/plugin-react-refresh';
 import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 
+import { pluginReact } from '@rsbuild/plugin-react';
+import { tanstackRouter } from '@tanstack/router-plugin/rspack';
+
 const isDev = process.env.NODE_ENV === 'development';
 
 // Target browsers, see: https://github.com/browserslist/browserslist
@@ -62,6 +65,7 @@ export default defineConfig({
     ],
   },
   plugins: [
+    tanstackRouter({ target: 'react', autoCodeSplitting: true }),
     new rspack.HtmlRspackPlugin({
       template: './index.html',
     }),
