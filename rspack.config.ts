@@ -74,6 +74,7 @@ export default defineConfig({
       shared: {
         react: { singleton: true, eager: true },
         'react-dom': { singleton: true, eager: true },
+        firebase: { singleton: true, eager: true },
       },
       dts: {
         consumeTypes: true,

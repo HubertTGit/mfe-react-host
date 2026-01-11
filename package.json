@@ -12,6 +12,8 @@
   "dependencies": {
     "@module-federation/enhanced": "^0.22.0",
     "@tailwindcss/postcss": "^4.1.18",
+    "@tanstack/react-router": "^1.147.3",
+    "firebase": "^12.7.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "tailwindcss": "^4.1.18"
@@ -21,6 +23,7 @@
     "@rspack/cli": "^1.7.0",
     "@rspack/core": "^1.7.0",
     "@rspack/plugin-react-refresh": "^1.5.3",
+    "@tanstack/router-plugin": "^1.149.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.23",
