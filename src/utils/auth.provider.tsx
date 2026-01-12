@@ -20,10 +20,10 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     const unsubscribe = authState$(
       (user: User | null) => {
-        console.log('user', user);
         setUser(user);
       },
       (error) => {
+        // TODO: handle error
         console.error(error);
       },
     );
