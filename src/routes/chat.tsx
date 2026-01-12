@@ -1,9 +1,30 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router';
+import { ChatCmp } from './../components/remote/ChatWrapper';
+import { useAuth } from './../utils/auth.provider';
+import { useData } from './../utils/data.provider';
+import ErrorBoundary from './../utils/ErrorBoundary';
+import { Suspense } from 'react';
+import { IChatMessage } from 'angularRemote/compiled-types/app/ui/chat-ui/chat.interface';
 
 export const Route = createFileRoute('/chat')({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
-  return <div>Hello "/chat"!</div>
+  const user = useAuth();
+  const { messages, sendMessage } = useData();
+  return (
+    <section className="px-4">
+      <ErrorBoundary>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ChatCmp
+            user={user}
+            onChat={(e: CustomEvent<IChatMessage>) => sendMessage(e.detail)}
+            messages={messages}
+            title="Chat"
+          />
+        </Suspense>
+      </ErrorBoundary>
+    </section>
+  );
 }

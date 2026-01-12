@@ -7,6 +7,7 @@ import { ProfileCmp } from './../components/remote/ProfileWrapper';
 import { logOut } from './../utils/auth';
 import { useAuth } from './../utils/auth.provider';
 import { useEffect } from 'react';
+import { DataProvider } from './../utils/data.provider';
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -36,7 +37,9 @@ function RootComponent() {
         {user && <ProfileCmp onLogout={handleLogout} user={user} />}
         <ThemeSwitchCmp />
       </header>
-      <Outlet />
+      <DataProvider>
+        <Outlet />
+      </DataProvider>
       <TanStackRouterDevtools position="bottom-right" />
     </>
   );
