@@ -1,3 +1,0 @@
-
-    export type RemoteKeys = 'angularRemote/LoginUi' | 'angularRemote/ThemeSwitch' | 'angularRemote/ChatUi' | 'angularRemote/Profile';
-    type PackageType<T> = T extends 'angularRemote/Profile' ? typeof import('angularRemote/Profile') :T extends 'angularRemote/ChatUi' ? typeof import('angularRemote/ChatUi') :T extends 'angularRemote/ThemeSwitch' ? typeof import('angularRemote/ThemeSwitch') :T extends 'angularRemote/LoginUi' ? typeof import('angularRemote/LoginUi') :any;

@@ -1,42 +1,26 @@
-import { Link, Outlet, createRootRoute } from '@tanstack/react-router';
+import { Outlet, createRootRoute } from '@tanstack/react-router';
 import { ThemeSwitchCmp } from './../components/remote/ThemeSwitch';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
-import { useEffect } from 'react';
 //init firebase config
 import './../utils/firebase';
+import { ProfileCmp } from './../components/remote/ProfileWrapper';
+import { logOut } from './../utils/auth';
+import { useAuth } from './../utils/auth.provider';
 
 export const Route = createRootRoute({
   component: RootComponent,
 });
 
 function RootComponent() {
-  useEffect(() => {
-    console.log('RootComponent');
-  }, []);
+  const user = useAuth();
+  const handleLogout = () => {
+    logOut();
+  };
   return (
     <>
-      <header className="flex justify-end p-4">
+      <header className="flex justify-between p-4">
+        {user && <ProfileCmp onLogout={handleLogout} user={user} />}
         <ThemeSwitchCmp />
-
-        <div className="p-2 flex gap-2 text-lg">
-          <Link
-            to="/"
-            activeProps={{
-              className: 'font-bold',
-            }}
-            activeOptions={{ exact: true }}
-          >
-            Home
-          </Link>
-          <Link
-            to="/chat"
-            activeProps={{
-              className: 'font-bold',
-            }}
-          >
-            Chat
-          </Link>
-        </div>
       </header>
       <Outlet />
       <TanStackRouterDevtools position="bottom-right" />
