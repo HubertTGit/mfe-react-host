@@ -2,9 +2,10 @@ import { User, NextOrObserver, ErrorFn, Unsubscribe, UserCredential } from '@ang
 import { Observable } from 'rxjs';
 export declare class AuthService {
     private readonly auth;
+    private readonly router;
     loginWithGoogle(): Promise<UserCredential>;
     loginWithGithub(): Promise<UserCredential>;
-    logout(): Promise<void>;
+    logout(): void;
     authStateChangeHandler(cb: NextOrObserver<User | null>, error: ErrorFn): Unsubscribe;
     userState$(): Observable<User | null>;
     getUser(): User | null;

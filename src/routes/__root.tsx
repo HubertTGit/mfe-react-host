@@ -1,6 +1,5 @@
 import { Outlet, createRootRoute, useRouter } from '@tanstack/react-router';
 import { ThemeSwitchCmp } from './../components/remote/ThemeSwitch';
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 //init firebase config
 import './../utils/firebase';
 import { ProfileCmp } from './../components/remote/ProfileWrapper';
@@ -40,7 +39,6 @@ function RootComponent() {
       <DataProvider>
         <Outlet />
       </DataProvider>
-      <TanStackRouterDevtools position="bottom-right" />
     </>
   );
 }

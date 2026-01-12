@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { LoginCmp } from './../components/remote/LoginWrapper';
 import ErrorBoundary from './../utils/ErrorBoundary';
 import { LoginType, auth } from './../utils/auth';
+import { Loader } from './../components/ui/Loader';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -17,7 +18,7 @@ function RouteComponent() {
   return (
     <main className="flex h-screen items-center justify-center">
       <ErrorBoundary>
-        <Suspense fallback={<>Loading...</>}>
+        <Suspense fallback={<Loader />}>
           <LoginCmp onLogin={onLoginHandler} />
         </Suspense>
       </ErrorBoundary>

@@ -5,6 +5,7 @@ import { useData } from './../utils/data.provider';
 import ErrorBoundary from './../utils/ErrorBoundary';
 import { Suspense } from 'react';
 import { IChatMessage } from 'angularRemote/compiled-types/app/ui/chat-ui/chat.interface';
+import { Loader } from './../components/ui/Loader';
 
 export const Route = createFileRoute('/chat')({
   component: RouteComponent,
@@ -16,7 +17,7 @@ function RouteComponent() {
   return (
     <section className="px-4">
       <ErrorBoundary>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <ChatCmp
             user={user}
             onChat={(e: CustomEvent<IChatMessage>) => sendMessage(e.detail)}

@@ -10,6 +10,9 @@ interface LoginWrapperProps {
 export const LoginCmp = lazy(async () => {
   await mount();
 
+  // delay for 1 second
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   return {
     default: ({ onLogin, isLoading }: LoginWrapperProps) => {
       const elementRef = useRef<HTMLElement>(null);

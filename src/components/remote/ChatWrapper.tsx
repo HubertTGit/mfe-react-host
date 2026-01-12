@@ -14,6 +14,9 @@ interface ChatWrapperProps {
 export const ChatCmp = lazy(async () => {
   await mount();
 
+  // delay for 1 second
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   return {
     default: ({ user, onChat, messages, title }: ChatWrapperProps) => {
       const elementRef = useRef<HTMLElement>(null);
