@@ -33,7 +33,12 @@ function RootComponent() {
   return (
     <>
       <header className="flex justify-between p-4">
-        {user && <ProfileCmp onLogout={handleLogout} user={user} />}
+        {user ? (
+          <ProfileCmp onLogout={handleLogout} user={user} />
+        ) : (
+          <span></span>
+        )}
+        <h1 className="text-2xl font-bold">React Chat App</h1>
         <ThemeSwitchCmp />
       </header>
       <DataProvider>

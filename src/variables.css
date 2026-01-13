@@ -1,0 +1,38 @@
+:root {
+    --background: 45 30% 96%;
+    --foreground: 200 60% 15%;
+    --card: 68 48% 77%;
+    --card-header: 98 37% 66%;
+    --primary: 15 90% 64%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 48 90% 88%;
+    --secondary-foreground: 200 60% 15%;
+    --border: 190 40% 80%;
+    --input: 214.3 31.8% 91.4%;
+    --input-foreground: 200 60% 15%;
+    --ring: 190 80% 50%;
+    --radius: 0.5rem;
+    --chat-bubble-primary: 170 70% 45%;
+    --chat-bubble-secondary: 48 90% 88%;
+    --chat-time: 200 40% 40%;
+    --chat-online: 120 60% 50%;
+  }
+
+  .dark {
+    --background: 222 50% 12%;
+    --foreground: 45 20% 90%;
+    --card: 220 40% 18%;
+    --card-header: 220 40% 25%;
+    --primary: 15 90% 64%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 190 70% 20%;
+    --secondary-foreground: 45 20% 90%;
+    --border: 220 40% 25%;
+    --input: 220 40% 20%;
+    --input-foreground: 45 20% 90%;
+    --ring: 190 70% 60%;
+    --chat-bubble-primary: 170 70% 35%;
+    --chat-bubble-secondary: 220 40% 20%;
+    --chat-time: 190 30% 60%;
+    --chat-online: 120 70% 60%;
+  }
