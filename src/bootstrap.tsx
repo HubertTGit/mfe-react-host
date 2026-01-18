@@ -26,3 +26,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     </AuthProvider>
   </React.StrictMode>,
 );
+
+import { registerServiceWorker } from './registerServiceWorker';
+registerServiceWorker();

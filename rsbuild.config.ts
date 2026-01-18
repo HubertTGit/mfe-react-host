@@ -2,6 +2,7 @@ import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
 import { pluginModuleFederation } from '@module-federation/rsbuild-plugin';
 import { tanstackRouter } from '@tanstack/router-plugin/rspack';
+import { GenerateSW } from 'workbox-webpack-plugin';
 
 export default defineConfig({
   plugins: [
@@ -24,7 +25,13 @@ export default defineConfig({
   ],
   tools: {
     rspack: {
-      plugins: [tanstackRouter({ target: 'react', autoCodeSplitting: true })],
+      plugins: [
+        tanstackRouter({ target: 'react', autoCodeSplitting: true }),
+        new GenerateSW({
+          clientsClaim: true,
+          skipWaiting: true,
+        }),
+      ],
     },
   },
   html: {
