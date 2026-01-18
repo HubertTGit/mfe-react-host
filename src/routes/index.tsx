@@ -7,6 +7,17 @@ import { Loader } from './../components/ui/Loader';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
+  head: () => ({
+    meta: [
+      {
+        name: 'description',
+        content: 'Login to Weee Chat',
+      },
+      {
+        title: 'Login - Weee Chat',
+      },
+    ],
+  }),
 });
 
 function RouteComponent() {

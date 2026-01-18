@@ -1,4 +1,9 @@
-import { Outlet, createRootRoute, useRouter } from '@tanstack/react-router';
+import {
+  HeadContent,
+  Outlet,
+  createRootRoute,
+  useRouter,
+} from '@tanstack/react-router';
 import { ThemeSwitchCmp } from './../components/remote/ThemeSwitch';
 //init firebase config
 import './../utils/firebase';
@@ -32,6 +37,7 @@ function RootComponent() {
   }, [user]);
   return (
     <>
+      <HeadContent />
       <header className="flex justify-between p-4">
         {user ? (
           <ProfileCmp onLogout={handleLogout} user={user} />
